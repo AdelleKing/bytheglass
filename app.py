@@ -16,12 +16,18 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+#inital conection to the database to bring through the enteries to the webpage.
 @app.route("/")
 @app.route("/get_wine")
 def get_wine():
     wines = mongo.db.wine.find()
     return render_template("wine.html", wines=wines)
+
+
+#functionality to enable the user to register for a profile. 
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    return render_template("register.html")
 
 
 if __name__ == "__main__":
