@@ -2,7 +2,7 @@
 {% block content %}
 
     {% for wine in wines %}
-        "Grape Variety: {{ wine.grape_variety }}<br>
+        {{ wine.grape_variety }}<br>
         {{ wine.wine_color }}<br>
         {{ wine.producer }}<br>
         {{ wine.region }}<br>
