@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for wine in wines %}
+        "Grape Variety: {{ wine.grape_variety }}<br>
+        {{ wine.wine_color }}<br>
+        {{ wine.producer }}<br>
+        {{ wine.region }}<br>
+        {{ wine.vintage }}<br>
+        {{ wine.ABV }}<br>
+        {{ wine.price }}<br>
+        {{ wine.review }}<br>
+        {{ wine.date_reviewed }}<br>
+    {% endfor %}
+
+{% endblock %}
