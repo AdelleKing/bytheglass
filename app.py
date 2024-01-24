@@ -79,23 +79,84 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    wines = wine()
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, wines=wines)
 
     return redirect(url_for("login"))
 
 
 
+@app.route("/wine")
+def wine():
+    wine=mongo.db.wine.find()
+    return wine
+
+    
 @app.route("/logout")
 def logout():
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
+
+
+@app.route("/add_wine", methods=["GET", "POST"])
+def add_wine():
+    if request.method == "POST":
+        favourite = "yes" if request.form.get("favourite") else "no"
+        wine = {
+            "wine_colour": request.form.get("category_name"),
+            "grape_variety": request.form.get("grape_variety"),
+            "producer": request.form.get("producer"),
+            "region": request.form.get("region"),
+            "vintage": request.form.get("vintage"),
+            "ABV": request.form.get("ABV"),
+            "price": request.form.get("price"),
+            "review": request.form.get("review"),
+            "vintage": request.form.get("vintage"),   
+            "added_by": session["user"]
+                    
+        }
+        mongo.db.wine.insert_one(wine)
+        flash("Wine Successfully Added")
+        return redirect(url_for("get_wine"))
+
+    
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_wine.html", categories=categories)
+
+
+
+@app.route("/edit_wine/<wine_id>", methods=["GET", "POST"])
+def edit_wine(wine_id):
+      if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        submit = {
+            "wine_colour": request.form.get("category_name"),
+            "grape_variety": request.form.get("grape_variety"),
+            "producer": request.form.get("producer"),
+            "region": request.form.get("region"),
+            "vintage": request.form.get("vintage"),
+            "ABV": request.form.get("ABV"),
+            "price": request.form.get("price"),
+            "review": request.form.get("review"),
+            "vintage": request.form.get("vintage"),   
+            "added_by": session["user"]
+           
+        }
+        mongo.db.wine.replace_one({"_id": ObjectId(wine_id)}, submit)
+        flash("Wine Successfully Updated") 
+
+      wine = mongo.db.wine.find_one({"_id": ObjectId(wine_id)})
+      categories = mongo.db.categories.find()
+      profiles =profile(username)
+      return render_template( "profile.html", wine=wine, categories=categories,profiles=profiles)
+
 
 
 if __name__ == "__main__":

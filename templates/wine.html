@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
+   <h3>Featured Wines</h3>
+    
+   <div class="slider">
     {% for wine in wines %}
-        {{ wine.grape_variety }}<br>
-        {{ wine.wine_color }}<br>
-        {{ wine.producer }}<br>
-        {{ wine.region }}<br>
-        {{ wine.vintage }}<br>
-        {{ wine.ABV }}<br>
-        {{ wine.price }}<br>
-        {{ wine.review }}<br>
-        {{ wine.date_reviewed }}<br>
-    {% endfor %}
+    <ul class="slides">
+      <li>
+        <img src="static/images/red1.jpg" alt="red wine in glass" width="500" height="400"> 
+        <div class="caption center-align">
+          <h3>{{ wine.grape_variety }}</h3>
+          <h5 class="light grey-text text-lighten-3"> {{ wine.wine_colour}}</h5>
+        </div>
+      </li>    
+      {% endfor %}     
+    </ul>    
+  </div>
+      
+    
 
 {% endblock %}
