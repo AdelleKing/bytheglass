@@ -118,7 +118,8 @@ def add_wine():
             "ABV": request.form.get("ABV"),
             "price": request.form.get("price"),
             "review": request.form.get("review"),
-            "vintage": request.form.get("vintage"),   
+            "vintage": request.form.get("vintage"),  
+            "favourite": favourite, 
             "added_by": session["user"]
                     
         }
@@ -135,7 +136,7 @@ def add_wine():
 @app.route("/edit_wine/<wine_id>", methods=["GET", "POST"])
 def edit_wine(wine_id):
       if request.method == "POST":
-        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        favourite = "yes" if request.form.get("is_urgent") else "no"
         submit = {
             "wine_colour": request.form.get("category_name"),
             "grape_variety": request.form.get("grape_variety"),
@@ -146,6 +147,7 @@ def edit_wine(wine_id):
             "price": request.form.get("price"),
             "review": request.form.get("review"),
             "vintage": request.form.get("vintage"),   
+            "favourite": favourite,
             "added_by": session["user"]
            
         }
@@ -154,8 +156,7 @@ def edit_wine(wine_id):
 
       wine = mongo.db.wine.find_one({"_id": ObjectId(wine_id)})
       categories = mongo.db.categories.find()
-      profiles =profile(username)
-      return render_template( "profile.html", wine=wine, categories=categories,profiles=profiles)
+      return render_template( "edit_wine.html", wine=wine, categories=categories)
 
 
 
