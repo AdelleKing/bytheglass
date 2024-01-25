@@ -10,7 +10,7 @@
 				<div class="input-field col s12">
                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
 					<select id="category_name" name="category_name" class="validate" required>
-                        <option value="" disabled selected>Choose Wine Colour</option>
+                        <option value="" disabled>Choose Wine Colour</option>
                         {% for category in categories %}
                             {% if category.category_name == wine.wine_colour %}
                             <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
@@ -36,7 +36,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s8">
-                    <input value="{{ wine.region }}" id="region" name="region" type="text" class="validate">
+                    <input value="{{wine.region }}" id="region" name="region" type="text" class="validate">
                     <label for="region">Region</label>
                   </div>
             </div>
@@ -72,7 +72,7 @@
                             {% if wine.favourite == "yes" %}
                                 <input type="checkbox" id="favourite" name="favourite" checked>
                             {% else %}
-                                <input type="checkbox" id="favourite" name="favourite" checked>
+                                <input type="checkbox" id="favourite" name="favourite">
                             {% endif %}
                             <span class="lever"></span>
                             Favourite
@@ -83,7 +83,7 @@
             <div class="row">
                 <div class="col s12 center-align">
                     <!-- cancel button -->
-                    <a href="{{ url_for('profile', username=session['user']) }}" class="btn-large red text-shadow">
+                    <a href="{{ url_for('profile')}}" class="btn-large red text-shadow">
                         Cancel <i class="fas fa-times-circle right"></i>
                     </a>
                     <button type="submit" class="btn-large light-blue darken-1 text-shadow" >

@@ -60,9 +60,12 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
+                    existing_user["password"], request.form.get("password")):
+                        session["user"] = request.form.get("username").lower()
+                        flash("Welcome, {}".format(
+                            request.form.get("username")))
+                        return redirect(url_for(
+                            "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -77,26 +80,21 @@ def login():
 
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
-    wines = wine()
+@app.route("/profile/", methods=["GET", "POST"])
+def profile():
+    user = mongo.db.users.find()
+    wines = mongo.db.wine.find()
+    profileDetails=mongo.db.users.find()
     # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-
-    if session["user"]:
-        return render_template("profile.html", username=username, wines=wines)
-
-    return redirect(url_for("login"))
-
-
-
-@app.route("/wine")
-def wine():
-    wine=mongo.db.wine.find()
-    return wine
+    return render_template("profile.html", wines=wines,  profileDetails=profileDetails)
 
     
+    
+
+
+
+
+
 @app.route("/logout")
 def logout():
     # remove user from session cookie
@@ -117,8 +115,7 @@ def add_wine():
             "vintage": request.form.get("vintage"),
             "ABV": request.form.get("ABV"),
             "price": request.form.get("price"),
-            "review": request.form.get("review"),
-            "vintage": request.form.get("vintage"),  
+            "review": request.form.get("review"), 
             "favourite": favourite, 
             "added_by": session["user"]
                     
@@ -135,8 +132,8 @@ def add_wine():
 
 @app.route("/edit_wine/<wine_id>", methods=["GET", "POST"])
 def edit_wine(wine_id):
-      if request.method == "POST":
-        favourite = "yes" if request.form.get("is_urgent") else "no"
+    if request.method == "POST":
+        favourite = "yes" if request.form.get("favourite") else "no"
         submit = {
             "wine_colour": request.form.get("category_name"),
             "grape_variety": request.form.get("grape_variety"),
@@ -146,19 +143,40 @@ def edit_wine(wine_id):
             "ABV": request.form.get("ABV"),
             "price": request.form.get("price"),
             "review": request.form.get("review"),
-            "vintage": request.form.get("vintage"),   
             "favourite": favourite,
             "added_by": session["user"]
            
         }
         mongo.db.wine.replace_one({"_id": ObjectId(wine_id)}, submit)
         flash("Wine Successfully Updated") 
+        return redirect(url_for('profile'))
 
-      wine = mongo.db.wine.find_one({"_id": ObjectId(wine_id)})
-      categories = mongo.db.categories.find()
-      return render_template( "edit_wine.html", wine=wine, categories=categories)
+    wine = mongo.db.wine.find_one({"_id": ObjectId(wine_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_wine.html", wine=wine, categories=categories)
 
 
+
+
+@app.route("/update/<users_id>", methods=["GET", "POST"])
+def update(users_id):
+    if request.method == "POST":
+        submit = {
+            "name": request.form.get("name"),
+            "location": request.form.get("location"),
+         }
+        mongo.db.users.update_one({"_id": ObjectId(users_id)}, {"$set":submit})
+        flash("Details Successfully Updated") 
+        return redirect(url_for('profile'))
+
+
+    users = mongo.db.users.find_one({"_id": ObjectId(users_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("update.html", users=users, categories=categories)
+    
+
+    
+    
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
