@@ -39,12 +39,14 @@ def register():
 
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "name": request.form.get("name"),
+            "location": request.form.get("location"),
         }
         mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
+        session["user"] = request.form.get("name").lower()
         flash("Registration Successful!")
     return render_template("register.html")
 
@@ -82,18 +84,12 @@ def login():
 
 @app.route("/profile/", methods=["GET", "POST"])
 def profile():
-    user = mongo.db.users.find()
     wines = mongo.db.wine.find()
     profileDetails=mongo.db.users.find()
-    # grab the session user's username from db
+
     return render_template("profile.html", wines=wines,  profileDetails=profileDetails)
 
     
-    
-
-
-
-
 
 @app.route("/logout")
 def logout():
@@ -122,7 +118,7 @@ def add_wine():
         }
         mongo.db.wine.insert_one(wine)
         flash("Wine Successfully Added")
-        return redirect(url_for("get_wine"))
+        return redirect(url_for("profile"))
 
     
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -175,7 +171,12 @@ def update(users_id):
     return render_template("update.html", users=users, categories=categories)
     
 
-    
+@app.route("/delete_wine/<wine_id>")
+def delete_wine(wine_id):
+    mongo.db.wine.delete_one({"_id": ObjectId(wine_id)})
+    flash("Wine Successfully Deleted")
+    return redirect(url_for("profile"))
+
     
 
 if __name__ == "__main__":

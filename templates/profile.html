@@ -12,52 +12,53 @@
     </div>
 
     <h4>About Me</h4>
-    <div>
-        {% for users in profileDetails %}
-            {% if users.username == session['user'] %}
-                <strong>Name: </strong>{{users.name}} <br>
-                <strong>Location: </strong>{{users.location}} <br>
-                <strong>Total number of wines reviewed: </strong>{{users.wine_reviews}} <br>  
-                <a href="{{ url_for('update', users_id=users._id) }}">Update Your Details</a>
-            {%else%}   
-                <strong>Name: </strong> <br>
-                <strong>Location: </strong> <br>
-                <strong>Total number of wines reviewed: </strong><br>  
-                <a href="{{ url_for('update', users_id=users._id) }}">Update Your Details</a> 
-            {% endif %}         
-        {% endfor %}
-    </div>
-
     
-        
-    
+    <div class="row">
+        {% for users in profileDetails  if session.user == users.username %}
+            
+                <div>
+                    <strong>Name: </strong>{{users.name}} <br>
+                    <strong>Location: </strong>{{users.location}} <br>
+                    <a href="{{ url_for('update', users_id=users._id) }}">Update Your Details</a>
+                </div>
+        {% endfor %}        
+    </div>     
 
        
         <h4 class="light-blue-text text-darken-4 center-align">Edit Wines you've reviewed</h4>
         <div class="row">
-            {% for wine in wines %} 
-            <div class="col s12 m7 size">
-              <div class="card light-blue darken-4">
-                <div class="card-image">
-                  <img src="../static/images/red1.jpg">
-                  <span class="card-title blue-text"><strong>{{ wine.grape_variety}}</strong></span>
-                </div>
-                <div class="card-content white-text">
-                    <span class="card-title"> 
-                        <strong>Producer:</strong> {{ wine.producer}}<br>
-                        <strong>Region:</strong> {{ wine.region}}<br>
-                        <strong>Vintage:</strong> {{ wine.vintage}}<br>
-                        <strong>ABV:</strong> {{ wine.ABV}}%<br>
-                        <strong>Price:</strong> £{{ wine.price}}<br>
-                        <strong>Review:</strong> {{ wine.review}}<br>
-                    </span> 
-                </div>
-                <div class="card-action">
-                    <a href="{{ url_for('edit_wine', wine_id=wine._id) }}" class="btn green accent-4">Edit</a>
-                    <a href="#" class="btn light-blue lighten-1">Delete</a>
-                </div>
-              </div>
-            </div>
+            {% for wine in wines if session.user|lower == wine.added_by|lower %}                 
+                    <div class="col s12 m7 size">
+                    <div class="card light-blue darken-4">
+                        <div class="card-image">
+                        <img src="../static/images/red1.jpg">
+                        <span class="card-title blue-text"><strong>{{ wine.grape_variety}}</strong></span>
+                        </div>
+                        <div class="card-content white-text">
+                            <span class="card-title"> 
+                                <strong>Producer:</strong> {{ wine.producer}}<br>
+                                <strong>Region:</strong> {{ wine.region}}<br>
+                                <strong>Vintage:</strong> {{ wine.vintage}}<br>
+                                <strong>ABV:</strong> {{ wine.ABV}}%<br>
+                                <strong>Price:</strong> £{{ wine.price}}<br>
+                                <strong>Review:</strong> {{ wine.review}}<br>
+                                <strong>Review:</strong> {{ wine.img}}<br>
+
+                            </span> 
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ url_for('edit_wine', wine_id=wine._id) }}" class="btn green accent-4">Edit</a>
+                            <a href="{{ url_for('delete_wine', wine_id=wine._id) }}" class="btn light-blue lighten-1">Delete</a>
+                        </div>
+                    </div>
+                    </div>                
+                
+                {% else%}
+                    <h3>You haven't added any wines!</h3>
+                    <a href="{{ url_for('add_wine')}}" class="btn-large red text-shadow">
+                        Add Wine <i class="fas fa-times-circle right"></i>
+                    </a>
+                
             {% endfor %}
           </div>
 
