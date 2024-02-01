@@ -38,3 +38,12 @@ body {
 .card .card-title{
   font-size: 15px;
 }
+
+
+.card .card-image img{
+  height: 20rem;
+}
+
+.brand-logo{
+  background-image: url("grapes.jpg");
+}
