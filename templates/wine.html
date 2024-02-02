@@ -3,19 +3,38 @@
 
    <h3>Featured Wines</h3>
     <!--needs if statement to only show a certain number of wines-->
-   <div class="slider">
-    {% for wine in wines %}
-    <ul class="slides">
-      <li>
-        <img src="static/images/red1.jpg" alt="red wine in glass" width="500" height="400"> 
-        <div class="caption center-align">
-          <h3>{{ wine.grape_variety }}</h3>
-          <h5 class="light grey-text text-lighten-3"> {{ wine.wine_colour}}</h5>
+    <div class="row">
+      {% for wine in wines if session.user|lower == wine.added_by|lower %}
+      <div class="col s12 m7 size">
+        <div class="card red darken-4">
+          <div class="card-image">
+            {% if wine.wine_colour == 'Red' %}
+            <img src="/static/images/wineglass.jpg" height="10%">
+            {% elif wine.wine_colour == 'White' %}
+            <img src="/static/images/white.jpg" height="10%">
+            {% elif wine.wine_colour == 'Sparkling' %}
+            <img src="/static/images/Sparkling.png" height="10%">
+            {% else %}
+            <img src="/static/images/rose.jpg" height="10%">
+            {% endif %}
+            <span class="card-title grey lighten-1 red-text text-darken-4"><strong>{{ wine.wine_colour}}</strong></span>
+          </div>
+          <div class="card-content white-text">
+            <span class="card-title">
+              <strong>Producer:</strong> {{ wine.producer}}<br>
+              <strong>Region:</strong> {{ wine.region}}<br>
+              <strong>Vintage:</strong> {{ wine.vintage}}<br>
+              <strong>ABV:</strong> {{ wine.ABV}}%<br>
+              <strong>Price:</strong> £{{ wine.price}}<br>
+              <strong>Review:</strong> {{ wine.review}} Added By: {{wine.added_by}}<br>
+            </span>
+          </div>
         </div>
-      </li>    
-      {% endfor %}     
-    </ul>    
-  </div>
+      </div>
+      {% endfor %}
+    </div>
+
+          
       
     
 

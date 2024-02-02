@@ -44,6 +44,18 @@ body {
   height: 20rem;
 }
 
-.brand-logo{
-  background-image: url("grapes.jpg");
+.card .card-image .card-title{
+  padding:5px;
+}
+
+.updateDetails{
+  color: #b71c1c;
+}
+
+.slider{
+  width: 50%;
+}
+
+.bgcolour{
+  background-color: #49494963;
 }

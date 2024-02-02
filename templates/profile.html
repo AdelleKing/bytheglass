@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col s12 m8 offset-m2">
             <div class="card-panel">
-                <h3 class="center-align light-blue-text text-darken-4">
+                <h3 class="center-align ">
                     {{ session['user'] }}'s Profile
                 </h3>
             </div>
@@ -19,17 +19,17 @@
                 <div>
                     <strong>Name: </strong>{{users.name}} <br>
                     <strong>Location: </strong>{{users.location}} <br>
-                    <a href="{{ url_for('update', users_id=users._id) }}">Update Your Details</a>
+                    <a href="{{ url_for('update', users_id=users._id) }}" class="updateDetails">Update Your Details</a>
                 </div>
         {% endfor %}        
     </div>     
 
        
-        <h4 class="light-blue-text text-darken-4 center-align">Edit Wines you've reviewed</h4>
+        <h4 class="red-text text-darken-4 center-align">Edit Wines you've reviewed</h4>
         <div class="row">
             {% for wine in wines if session.user|lower == wine.added_by|lower %}
             <div class="col s12 m7 size">
-                <div class="card light-blue darken-4">
+                <div class="card red darken-4">
                     <div class="card-image">
                         {% if wine.wine_colour == 'Red' %}
                                 <img src="/static/images/wineglass.jpg" height="10%">
@@ -40,7 +40,7 @@
                             {% else %}
                                 <img src="/static/images/rose.jpg" height="10%">
                         {% endif %}                        
-                        <span class="card-title blue-text"><strong>{{ wine.wine_colour}}</strong></span>
+                        <span class="card-title grey lighten-1 red-text text-darken-4"><strong>{{ wine.wine_colour}}</strong></span>
                     </div>
                     <div class="card-content white-text">
                         <span class="card-title">
@@ -53,9 +53,9 @@
                         </span>
                     </div>
                     <div class="card-action">
-                        <a href="{{ url_for('edit_wine', wine_id=wine._id) }}" class="btn green accent-4">Edit</a>
+                        <a href="{{ url_for('edit_wine', wine_id=wine._id) }}" class="btn red darken-2">Edit</a>
                         <a href="{{ url_for('delete_wine', wine_id=wine._id) }}"
-                            class="btn light-blue lighten-1">Delete</a>
+                            class="btn  red darken-4">Delete</a>
                     </div>
                 </div>
             </div>
