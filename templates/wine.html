@@ -2,7 +2,9 @@
 {% block content %}
 
 <h3 class="center-align"> Welcome to The Humble Grape</h3> <br>
-<h4 class="center-align red-text text-darken-4">Explore the world of wine, add the wine you've tasted and share your experiences with everyone! </h4> <br>
+<h4 class="center-align red-text text-darken-4">Explore the world of wine!</h4>
+<h4 class="center-align red-text text-darken-4">Add the wines you've tasted</h4>
+<h4 class="center-align red-text text-darken-4">Share your experiences with everyone!</h4> <br>
 
 
 
@@ -46,7 +48,7 @@
       {% endfor %}
     </div><br>
   
-    <h5 class="center-align"><strong>Meet wine enthusiasts local to you </strong></h5>
+    <h5 class="center-align"><strong>Meet wine enthusiasts local to you </strong></h5><br>
     <div class="row">
       {% for users in user  %}
         <div class="col s12 m3 size">
@@ -72,7 +74,7 @@
             <div class="card-content red darken-4 white-text">
               <span class="card-title">
                 <strong>Fave wine:</strong> {{ users.favourite}}<br>
-                <strong>Fave wine region:</strong> {{ users.wine_region}}<br>
+                <strong>Fave region:</strong> {{ users.wine_region}}<br>
                 <strong>Location:</strong> {{ users.location}}<br>
               </span>
             </div>

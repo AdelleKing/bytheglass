@@ -88,3 +88,43 @@ img{
 .card .card-action:last-child{
   display: flex;
 }
+
+@media only screen and (max-width:992px){
+
+  nav .brand-logo{
+  left: 40%;
+  font-size: 1.5rem;
+}
+
+.inside{
+  display: flex;
+  flex-direction: column;
+}
+
+.col1{
+  margin: 3px;
+}
+
+.row .col.m7{
+  width: 100%;
+}
+
+h3{
+  font-size: 2rem;
+}
+
+}
+ 
+@media only screen and (max-width:992px){
+
+  .btn, .btn-large, .btn-small, .btn-flat{
+    font-size: .9rem;
+    padding: 0 3px;
+  }
+}
+
+@media only screen and (min-width:601px){
+.row .col.m3{
+height:40rem;
+}
+}
