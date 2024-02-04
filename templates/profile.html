@@ -13,14 +13,41 @@
 
     <h4>About Me</h4>
     
-    <div class="row">
+    <div >                
         {% for users in profileDetails  if session.user == users.username %}
-            
-                <div>
+        <div class="inside">
+            <div class="col1">
+                {% if users.icon == 'female' %}
+                <img src="/static/images/female.png" >
+                {% elif users.icon == 'female2' %}
+                <img src="/static/images/female2.png" >
+                {% elif users.icon == 'female3' %}
+                <img src="/static/images/female3.png" >
+                {% elif users.icon == 'male' %}
+                <img src="/static/images/male.png" >
+                {% elif users.icon == 'male2' %}
+                <img src="/static/images/male2.png" >
+                {% elif users.icon == 'male3' %}
+                <img src="/static/images/male3.png" >
+                {% else %}
+                <img src="/static/images/penguin.png" >
+                {% endif %}
+            </div>
+                <div class="col1">
+                    <strong>Username: </strong>{{users.username}} <br>
                     <strong>Name: </strong>{{users.name}} <br>
                     <strong>Location: </strong>{{users.location}} <br>
+                    <strong>Gender: </strong>{{users.gender}} <br>
+                    <strong>Favourite Wine Colour: </strong>{{users.favourite}} <br>
                     <a href="{{ url_for('update', users_id=users._id) }}" class="updateDetails">Update Your Details</a>
+                </div> 
+                <div class="col1">
+                    <strong>Favourite wine region: </strong>{{users.wine_region}} <br>
+                    <strong>Sweetness preference: </strong>{{users.sweetness}}<br>
+                    <strong> </strong> <br>
+                    <strong> </strong><br>
                 </div>
+        </div>
         {% endfor %}        
     </div>     
 

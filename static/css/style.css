@@ -59,3 +59,32 @@ body {
 .bgcolour{
   background-color: #49494963;
 }
+
+.socials{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.icons{
+  font-size: 25px;
+  
+}
+
+.inside{
+  display: flex;
+  flex-direction: row;
+}
+
+.col1{
+  margin: 30px;
+}
+
+img{
+ height: 80px;
+
+}
+
+.card .card-action:last-child{
+  display: flex;
+}

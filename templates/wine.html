@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 
-   <h3>Featured Wines</h3>
+<h3 class="center-align"> Welcome to The Humble Grape</h3> <br>
+<h4 class="center-align red-text text-darken-4">Explore the world of wine, add the wine you've tasted and share your experiences with everyone! </h4> <br>
+
+
+
+
+
+   <h5 class="center-align"><strong>Featured Wines</strong></h5>
+    
     <!--needs if statement to only show a certain number of wines-->
     <div class="row">
-      {% for wine in wines if session.user|lower == wine.added_by|lower %}
-      <div class="col s12 m7 size">
+      {% for wine in wines if wine.recommend == 'yes' %}
+      <div class="col s12 m3 size">
         <div class="card red darken-4">
           <div class="card-image">
             {% if wine.wine_colour == 'Red' %}
@@ -25,12 +33,56 @@
               <strong>Region:</strong> {{ wine.region}}<br>
               <strong>Vintage:</strong> {{ wine.vintage}}<br>
               <strong>ABV:</strong> {{ wine.ABV}}%<br>
-              <strong>Price:</strong> £{{ wine.price}}<br>
-              <strong>Review:</strong> {{ wine.review}} Added By: {{wine.added_by}}<br>
+              <strong>Added By:</strong> {{wine.added_by}}<br>
             </span>
+          </div>
+          <div class="card-action homebtn">
+            {% if session.user %}
+             <a href="#" class="btn red darken-4">wish list</a>
+            {% endif %}
           </div>
         </div>
       </div>
+      {% endfor %}
+    </div><br>
+  
+    <h5 class="center-align"><strong>Meet wine enthusiasts local to you </strong></h5>
+    <div class="row">
+      {% for users in user  %}
+        <div class="col s12 m3 size">
+          <div class="card ">
+            <div class="card-image">
+              {% if users.icon == 'female' %}
+                <img src="/static/images/female.png">
+                {% elif users.icon == 'female2' %}
+                  <img src="/static/images/female2.png">
+                {% elif users.icon == 'female3' %}
+                  <img src="/static/images/female3.png">
+                {% elif users.icon == 'male' %}
+                  <img src="/static/images/male.png">
+                {% elif users.icon == 'male2' %}
+                  <img src="/static/images/male2.png">
+                {% elif users.icon == 'male3' %}
+                  <img src="/static/images/male3.png">
+                {% else %}
+                  <img src="/static/images/penguin.png">
+              {% endif %}
+              <span class="card-title grey lighten-1 red-text text-darken-4"><strong>{{ users.username}}</strong></span>
+            </div>
+            <div class="card-content red darken-4 white-text">
+              <span class="card-title">
+                <strong>Fave wine:</strong> {{ users.favourite}}<br>
+                <strong>Fave wine region:</strong> {{ users.wine_region}}<br>
+                <strong>Location:</strong> {{ users.location}}<br>
+              </span>
+            </div>
+            <div class="card-action red darken-4 ">
+              {% if session.user %}
+                <a href="#" class="btn red darken-2" >Follow User</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
       {% endfor %}
     </div>
 

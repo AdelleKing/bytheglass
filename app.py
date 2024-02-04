@@ -22,7 +22,8 @@ mongo = PyMongo(app)
 @app.route("/get_wine")
 def get_wine():
     wines = mongo.db.wine.find()
-    return render_template("wine.html", wines=wines)
+    user = mongo.db.users.find()
+    return render_template("wine.html", wines=wines, user=user)
 
 
 #functionality to enable the user to register for a profile. 
@@ -46,8 +47,11 @@ def register():
         mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
-        session["user"] = request.form.get("name").lower()
+        session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
+        return redirect(url_for(
+                            "profile", username=session["user"]))
+
     return render_template("register.html")
 
 
@@ -102,7 +106,7 @@ def logout():
 @app.route("/add_wine", methods=["GET", "POST"])
 def add_wine():
     if request.method == "POST":
-        favourite = "yes" if request.form.get("favourite") else "no"
+        recommend = "yes" if request.form.get("recommend") else "no"
         wine = {
             "wine_colour": request.form.get("category_name"),
             "grape_variety": request.form.get("grape_variety"),
@@ -112,7 +116,7 @@ def add_wine():
             "ABV": request.form.get("ABV"),
             "price": request.form.get("price"),
             "review": request.form.get("review"), 
-            "favourite": favourite, 
+            "recommend": recommend, 
             "added_by": session["user"]
                     
         }
@@ -129,7 +133,7 @@ def add_wine():
 @app.route("/edit_wine/<wine_id>", methods=["GET", "POST"])
 def edit_wine(wine_id):
     if request.method == "POST":
-        favourite = "yes" if request.form.get("favourite") else "no"
+        recommend = "yes" if request.form.get("recommend") else "no"
         submit = {
             "wine_colour": request.form.get("category_name"),
             "grape_variety": request.form.get("grape_variety"),
@@ -139,7 +143,7 @@ def edit_wine(wine_id):
             "ABV": request.form.get("ABV"),
             "price": request.form.get("price"),
             "review": request.form.get("review"),
-            "favourite": favourite,
+            "recommend": recommend,
             "added_by": session["user"]
            
         }
@@ -160,6 +164,12 @@ def update(users_id):
         submit = {
             "name": request.form.get("name"),
             "location": request.form.get("location"),
+            "gender": request.form.get("gender"),
+            "favourite": request.form.get("category_name"),
+            "wine_region": request.form.get("wine_region"),
+            "sweetness": request.form.get("sweetness"),
+            "icon": request.form.get("icon"),
+
          }
         mongo.db.users.update_one({"_id": ObjectId(users_id)}, {"$set":submit})
         flash("Details Successfully Updated") 
@@ -177,7 +187,7 @@ def delete_wine(wine_id):
     flash("Wine Successfully Deleted")
     return redirect(url_for("profile"))
 
-    
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
