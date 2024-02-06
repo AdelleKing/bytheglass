@@ -9,8 +9,15 @@
             <div class="row">
                 <div class="input-field col s12 m6">
                     <select id="icon" name="icon" class="validate">
-                        {% for user in users %}
-
+                        
+                        {% if users.icon == null %}
+                            <option value="female" data-icon="/static/images/female.png">female</option>
+                            <option value="female2" data-icon="/static/images/female2.png">female2 </option>
+                            <option value="female3" data-icon="/static/images/female3.png">female3 </option>
+                            <option value="male" data-icon="/static/images/male.png">male </option>
+                            <option value="male2" data-icon="/static/images/male2.png">male2</option>
+                            <option value="male3" data-icon="/static/images/male3.png">male3 </option>
+                            {% else %}
                             <option value="{{ users.icon }}" selected>{{ users.icon }}</option>
                             <option value="female" data-icon="/static/images/female.png">female</option>
                             <option value="female2" data-icon="/static/images/female2.png">female2 </option>
@@ -19,7 +26,7 @@
                             <option value="male2" data-icon="/static/images/male2.png">male2</option>
                             <option value="male3" data-icon="/static/images/male3.png">male3 </option>
 
-                        {% endfor %}
+                        {% endif %}
                     </select>
                     <label for="icon">Choose </label>
                 </div>
@@ -46,8 +53,8 @@
                 <div class="input-field col s12">
                     <select id="gender" name="gender" class="validate" value="{{users.gender}}" >
                         <option value="" disabled selected></option>
-                        {% for user in users %}
-                            {% if user.gender == "" %}
+                        
+                            {% if users.gender == "" %}
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                               {% else %}
@@ -55,7 +62,7 @@
                                   <option value="Male">Male</option>
                                   <option value="Female">Female</option>                                  
                             {% endif %}
-                        {% endfor %}      
+                             
                     </select>
                     <label for="gender">Gender</label>
                 </div>
@@ -70,8 +77,8 @@
                 <div class="input-field col s12">
                     <select id="sweetness" name="sweetness" class="validate" value="{{users.sweetness}}" >
                         <option value="" disabled selected></option>
-                        {% for user in users %}
-                            {% if user.sweetness == "" %}
+                        
+                            {% if users.sweetness == "" %}
                                 <option value="Dry">Dry</option>
                                 <option value="Med">Medium</option>
                                 <option value="Sweet">Sweet</option>
@@ -81,7 +88,7 @@
                                   <option value="Med">Medium</option>
                                   <option value="Sweet">Sweet</option>
                             {% endif %}
-                        {% endfor %}      
+                              
                     </select>
                     <label for="sweetness">Sweetness Preference</label>
                 </div>
