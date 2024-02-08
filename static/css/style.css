@@ -2,13 +2,23 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    margin: 0;
     margin-top: 10px;
   }
 
   main {
     flex: 1 0 auto;
   }
-      
+    
+.container{
+  width: 100%;
+  
+}
+
+.featurewine{
+  background-color: antiquewhite;
+  margin: 0;
+}
 
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -19,13 +29,19 @@ body {
 }
 
 .page-footer{
-    margin-top: 7%;
+    margin-top: 0;
+}
+
+.row{
+  margin:0;
 }
 
 .row .col.m7{
   width:30%;
   
 }
+
+
 
 .card .card-content{
   padding:3px;
@@ -89,6 +105,41 @@ img{
 .card .card-action:last-child{
   display: flex;
 }
+
+.usersBackground{
+  background-color: #f8e8e8;
+  width: 100%;
+}
+
+.parallax-container{
+  height: 600px;
+}
+
+.maintext{
+  display: flex;
+
+}
+
+.text-box{
+  position: absolute;
+  bottom: 170px;
+  right: 20px;
+  background-color: #f3fff4;
+  width: 30%;
+  height: 30%;
+  border-radius: 20px;
+}
+
+.parallax-container{
+  z-index: 1;
+}
+
+.parallax-container .parallax img{
+  opacity: 0.2;
+  z-index: -1;
+}
+
+
 
 @media only screen and (max-width:992px){
 

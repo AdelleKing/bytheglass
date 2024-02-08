@@ -1,58 +1,77 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="parallax-container">
+  <div class="parallax"><img src="/static/images/main1.jpg">
+    <section class="maintext"> 
+      <div class="text-box">
+        <h5 class="center-align red-text text-darken-4">Explore the world of wine!</h5>
+        <h5 class="center-align red-text text-darken-4">Add the wines you've tasted</h5>
+        <h5 class="center-align red-text text-darken-4">Share your experiences with everyone!</h5> <br>
+      </div>
+  </section>
+  </div>
+</div>
 
-<h3 class="center-align"> Welcome to The Humble Grape</h3> <br>
-<h4 class="center-align red-text text-darken-4">Explore the world of wine!</h4>
-<h4 class="center-align red-text text-darken-4">Add the wines you've tasted</h4>
-<h4 class="center-align red-text text-darken-4">Share your experiences with everyone!</h4> <br>
 
 
 
 
 
-   <h5 class="center-align"><strong>Featured Wines</strong></h5>
+   
     
     <!--needs if statement to only show a certain number of wines-->
-    <div class="row">
-      {% for wine in wines if wine.recommend == 'yes' %}
-      <div class="col s12 m3 size">
-        <div class="card red darken-4">
-          <div class="card-image">
-            {% if wine.wine_colour == 'Red' %}
-            <img src="/static/images/wineglass.jpg" height="10%">
-            {% elif wine.wine_colour == 'White' %}
-            <img src="/static/images/white.jpg" height="10%">
-            {% elif wine.wine_colour == 'Sparkling' %}
-            <img src="/static/images/Sparkling.png" height="10%">
-            {% else %}
-            <img src="/static/images/rose.jpg" height="10%">
-            {% endif %}
-            <span class="card-title grey lighten-1 red-text text-darken-4"><strong>{{ wine.wine_colour}}</strong></span>
-          </div>
-          <div class="card-content white-text">
-            <span class="card-title">
-              <strong>Producer:</strong> {{ wine.producer}}<br>
-              <strong>Region:</strong> {{ wine.region}}<br>
-              <strong>Vintage:</strong> {{ wine.vintage}}<br>
-              <strong>ABV:</strong> {{ wine.ABV}}%<br>
-              <strong>Added By:</strong> {{wine.added_by}}<br>
-            </span>
-          </div>
-          <div class="card-action homebtn">
-            {% if session.user %}
-             <a href="#" class="btn red darken-4">wish list</a>
-            {% endif %}
+    <section class="featurewine">
+      <h5 class="center-align"><strong>Featured Wines</strong></h5>
+      <div class="row">
+        {% for wine in wines if wine.recommend == 'yes' %}
+        <div class="col s12 m4 size">
+          <div class="card red darken-4">
+            <div class="card-image">
+              {% if wine.wine_colour == 'Red' %}
+              <img src="/static/images/wineglass.jpg" height="10%">
+              {% elif wine.wine_colour == 'White' %}
+              <img src="/static/images/white.jpg" height="10%">
+              {% elif wine.wine_colour == 'Sparkling' %}
+              <img src="/static/images/Sparkling.png" height="10%">
+              {% else %}
+              <img src="/static/images/rose.jpg" height="10%">
+              {% endif %}
+              <span
+                class="card-title grey lighten-1 red-text text-darken-4"><strong>{{ wine.wine_colour}}</strong></span>
+            </div>
+            <div class="card-content white-text">
+              <span class="card-title">
+                <strong>Producer:</strong> {{ wine.producer}}<br>
+                <strong>Region:</strong> {{ wine.region}}<br>
+                <strong>Vintage:</strong> {{ wine.vintage}}<br>
+                <strong>ABV:</strong> {{ wine.ABV}}%<br>
+                <strong>Added By:</strong> {{wine.added_by}}<br>
+              </span>
+            </div>
+            <div class="card-action homebtn">
+              {% if session.user %}
+              <a href="#" class="btn red darken-4">wish list</a>
+              {% endif %}
+            </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div><br>
-  
-    <h5 class="center-align"><strong>Meet wine enthusiasts local to you </strong></h5><br>
+    </section><br>
+    
+    <div class="parallax-container">
+      <div class="parallax"><img src="/static/images/main2.jpg">     
+      </div>
+    </div>
+    
+
+    <section class="usersBackground">
+      <div class="divider"></div>
+      <h5 class="center-align"><strong>Meet wine enthusiasts local to you </strong></h5><br>
     <div class="row">
       {% for users in user  %}
-        <div class="col s12 m3 size">
-          <div class="card ">
+        <div class="col s12 m4 size ">
+          <div class="card transparent ">
             <div class="card-image">
               {% if users.icon == 'female' %}
                 <img src="/static/images/female.png">
@@ -87,6 +106,7 @@
         </div>
       {% endfor %}
     </div>
+  </section>
 
           
       
