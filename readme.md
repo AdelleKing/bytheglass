@@ -102,16 +102,16 @@ As my favourite wine is a red wine, it was only fitting that this website have a
     - Flask is a python framework to enable my backend functionality to be displayed to the web browser for user interaction.   
 3. [Materialise:](https://materializecss.com/)
     - Materialise is a CSS framework which enabled me to style my website and apply functionality.   
-1. [Font Awesome:](https://fontawesome.com/)
+4. [Font Awesome:](https://fontawesome.com/)
     - Font Awesome was used for icons throughout the website including within the footer.
-2. [Git](https://git-scm.com/)
+5. [Git](https://git-scm.com/)
     - Git was used for version control by utilizing the command line terminal to commit to Git and Push to GitHub.
-3. [GitHub:](https://github.com/)
+6. [GitHub:](https://github.com/)
     - GitHub was used to store the project code after being pushed from Git.
-4. VIDEO EDITING SOFTWARE
-5. [Balsamiq:](https://balsamiq.com/)
+7. VIDEO EDITING SOFTWARE
+8. [Balsamiq:](https://balsamiq.com/)
     - Balsamiq was used to create the wireframes during the design process.
-6. [ImageColorPicker:](https://imagecolorpicker.com/)
+9. [ImageColorPicker:](https://imagecolorpicker.com/)
     -Image Color Picker was used to select the colors throughout the site. 
 
 ## **Current Features **
@@ -167,23 +167,27 @@ Javascript
 There were no erros identified within the console log within the browser ![console Log view](testing/consoleLog.png)
 
 ### Testing User Stories from User Experience (UX) Section
-1)	As a user, I want to look at the world map and see where vacation options could be in:
-a.	The user can move the map around to find places within the world which resonates with them. And understand where this place is in relation to other places or their home.
-b.	This could be improved by enabling a search functionality within the map.
 
-2)	As a user, I want to be able to use the map to find places of interests in their chosen vacation destination:
-a.	The user can view the map and the map can be interacted with to zoom into locations and see places of interest.
 
-3)	As a user, I want to use the map to plan travel options and local travel options from a point to a point:
-a.	The map can provide directions, including distance from one point on the map to another. 
-b.	The map can also support the user with finding local transport options.
+1)	As a user, I want to see wines which have been recommended by others and the reasons why:
+a.	users and visitors can see wines recommened by others and read any reviews left by the taster. 
+b.	Registered users also have the option to add wines to a wish list for future tasting.
+c. This could be improved by being able to add multiple reviews for one wine should someone else try the wine, currently a user who has tried a wine already in the database would need to re-add the wine to submit a review. 
 
-4)	As a user, I want to store experiences I’d like to have, electronically :
-a.	The user can use the bucket list tab to note the experiences they would like to experience in the future. This can include places, experiences, activities, festivities.
-b.	This could be improved by using backend functionality which would store the users input so they can return without losing any data.
+2)	As a user, I want to be able have a space to save the wines I have tasted for future reference.
+a.	Users will be able to see wines they have saved to their wish list in their profile area.
+b. This could also be improved by enabelling the user to select if the wine they have uploaded to the database has been tasted and leave a review or to be saved to their wish list area - wihtout tasting and review details.
 
-5)	As a user, I want the ability to make travel decisions influenced by the exchange rate of that destination. 
-a.	The exchange rate API can be used to select the current currency and the destination currency and see the real time exchange rates. 
+3)	As a user, I want to find others who may want to discuss wine in more detail.
+a.	Future functionality will enable users to 'follow' others. 
+b.	This functionality could also be extended to allow users to talk to each other through their profile pages. 
+
+4)	As a user, I want hear others experiences and wine activities that I may want to partake in 
+a.	Future functionality will include users ability to post meetups and events to continue the wine discussion offline. 
+
+
+5)	As a user, I want to be able to share my experiences and activities with others.
+a.	Future functionality could be to have a noticeboard within the site to allow users to post things they have done which may interest others, without needing to create an event. 
 
 
 
