@@ -1,9 +1,14 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     margin: 0;
-    margin-top: 10px;
+    
   }
 
   main {
@@ -138,6 +143,8 @@ img{
   opacity: 0.2;
   z-index: -1;
 }
+
+
 
 
 
