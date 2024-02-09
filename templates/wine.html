@@ -14,7 +14,14 @@
 
 <section class="featurewine"> 
   <div class="divider"></div>
-      <h5>Recommended Wines</h5>
+  <div class="headings"> 
+    <div class="heading1">
+      <h5 class="center-align"><strong>Recommended Wines </strong></h5>
+    </div>
+  <div class="heading2">
+    <h6 class="center-align"><a href="{{ url_for('register') }}">Register to add wine</a></h6>
+  </div>
+  </div> 
       <div class="row">
         {% for wine in wines if wine.recommend == 'yes' %}
         <div class="col s12 m3 size">
@@ -58,8 +65,15 @@
       <div class="parallax-container">          
         <div class="parallax"><img src="/static/images/main2.jpg">
       </div>
-    </div>    
-      <h5 class="center-align"><strong>Meet wine enthusiasts local to you </strong></h5><br>
+    </div>  
+    <div class="headings"> 
+      <div class="heading1">
+        <h5 class="center-align"><strong>Meet wine enthusiasts local to you </strong></h5>
+      </div>
+    <div class="heading2">
+      <h6 class="center-align"><a href="{{ url_for('register') }}">Register to follow others</a></h6>
+    </div>
+    </div> 
     <div class="row">
       {% for users in user  %}
         <div class="col s12 m3 size ">
