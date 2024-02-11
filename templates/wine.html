@@ -48,11 +48,11 @@
         <div class="col s12 m3 size">
           <div class="card transparent">
             <div class="card-image">
-              {% if wine.wine_colour == 'Red' %}
+              {% if wine.wine_colour == 'red' %}
               <img src="/static/images/wineglass.jpg" height="10%" draggable="false">
-              {% elif wine.wine_colour == 'White' %}
+              {% elif wine.wine_colour == 'white' %}
               <img src="/static/images/white.jpg" height="10%" draggable="false">
-              {% elif wine.wine_colour == 'Sparkling' %}
+              {% elif wine.wine_colour == 'sparkling' %}
               <img src="/static/images/Sparkling.png" height="10%" draggable="false">
               {% else %}
               <img src="/static/images/rose.jpg" height="10%" draggable="false">
@@ -94,9 +94,7 @@
       <div class="heading1">
         <h5 class="center-align"><strong>Meet wine enthusiasts local to you </strong></h5>
       </div>
-    <div class="heading2">
-      <h6 class="center-align"><a href="{{ url_for('register') }}">Register to follow others</a></h6>
-    </div>
+    
     </div> 
     <div class="row">
       {% for users in user  %}

@@ -28,9 +28,9 @@ def get_wine():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    query= request.form.get("query")
-    user = list(mongo.db.wine.find({"$text": {"$search":query}}))
-    return render_template("wine.html",  user=user)
+    query = request.form.get("query")
+    wines = mongo.db.wine.find({"$text": {"$search": query }})
+    return render_template("wine.html", wines=wines)
 
 
 
@@ -117,7 +117,7 @@ def add_wine():
     if request.method == "POST":
         recommend = "yes" if request.form.get("recommend") else "no"
         wine = {
-            "wine_colour": request.form.get("category_name"),
+            "wine_colour": request.form.get("wine_colour"),
             "grape_variety": request.form.get("grape_variety"),
             "producer": request.form.get("producer"),
             "region": request.form.get("region"),
@@ -134,7 +134,7 @@ def add_wine():
         return redirect(url_for("profile"))
 
     
-    categories = mongo.db.categories.find().sort("category_name", 1)
+    categories = mongo.db.categories.find().sort("wine_colour", 1)
     return render_template("add_wine.html", categories=categories)
 
 
@@ -144,7 +144,7 @@ def edit_wine(wine_id):
     if request.method == "POST":
         recommend = "yes" if request.form.get("recommend") else "no"
         submit = {
-            "wine_colour": request.form.get("category_name"),
+            "wine_colour": request.form.get("wine_colour"),
             "grape_variety": request.form.get("grape_variety"),
             "producer": request.form.get("producer"),
             "region": request.form.get("region"),
@@ -161,7 +161,7 @@ def edit_wine(wine_id):
         return redirect(url_for('profile'))
 
     wine = mongo.db.wine.find_one({"_id": ObjectId(wine_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
+    categories = mongo.db.categories.find().sort("wine_colour", 1)
     return render_template("edit_wine.html", wine=wine, categories=categories)
 
 
@@ -174,7 +174,7 @@ def update(users_id):
             "name": request.form.get("name"),
             "location": request.form.get("location"),
             "gender": request.form.get("gender"),
-            "favourite": request.form.get("category_name"),
+            "favourite": request.form.get("wine_colour"),
             "wine_region": request.form.get("wine_region"),
             "sweetness": request.form.get("sweetness"),
             "icon": request.form.get("icon"),
@@ -186,7 +186,7 @@ def update(users_id):
 
 
     users = mongo.db.users.find_one({"_id": ObjectId(users_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
+    categories = mongo.db.categories.find().sort("wine_colour", 1)
     return render_template("update.html", users=users, categories=categories)
     
 
