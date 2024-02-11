@@ -124,7 +124,7 @@ The home page - wine.html - is where users will see wines which have been recomm
 ### **Profile Page**
 This page allows the user to further populate their profile details including their favourite wine colour or wine region, as well as change their profile picture. This information is additional to the user profile questions needed for registration, but are added to the database once submitted, allowing for the information to be used in other areas of the website.
 
-Here users can also edit or delete wines they have entered. This functionality is only available to those who have registered.
+Here users can also edit or delete wines they have entered. This functionality is only available to those who have registered. Defensive programming has also been used here to enable users to confirm if they want to delete a wine added. 
 
 ### **Other pages**
 The users who are not logged in will be able to see a registration/ login page for them to complete. 

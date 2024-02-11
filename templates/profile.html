@@ -82,8 +82,24 @@
                     </div>
                     <div class="card-action">
                         <a href="{{ url_for('edit_wine', wine_id=wine._id) }}" class="btn red darken-2">Edit</a>
-                        <a href="{{ url_for('delete_wine', wine_id=wine._id) }}"
-                            class="btn  red darken-4">Delete</a>
+                        <button data-target="modal1" class="btn modal-trigger">Delete</button>
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                              <h4>Deleting this wine!</h4>
+                              <p>Are you sure??</p>
+                            </div>
+                            <section class="modaldirection">
+                            <div class="modal-footer">
+                                <a href="{{ url_for('delete_wine', wine_id=wine._id) }}"
+                                class="btn  red darken-4">Yes, Delete</a>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{{ url_for('profile')}}"
+                                class="btn  red ">Cancel</a>
+                            </div>
+                        </section>
+                          </div>
+                        
                     </div>
                 </div>
             </div>

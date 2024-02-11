@@ -3,7 +3,8 @@ $(document).ready(function () {
     $('.slider').slider();
     $('select').formSelect();
     $('.tooltipped').tooltip();
-    $('.parallax').parallax()
+    $('.parallax').parallax();
+    $('.modal').modal();
 });
 
 
