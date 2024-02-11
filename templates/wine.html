@@ -24,11 +24,25 @@
   <div class="headings"> 
     <div class="heading1">
       <h5 class="center-align"><strong>Recommended Wines </strong></h5>
-    </div>
-  <div class="heading2">
-    <h6 class="center-align"><a href="{{ url_for('register') }}">Register to add wine</a></h6>
-  </div>
+    </div>  
   </div> 
+  <div class="row card panel grey lighten-5">
+    <form action="{{ url_for('search')}}" method="POST" class="col 12">
+      <div class="row valign-wrapper center-align">
+        <div class="input-field col s12 m8">
+          <i class="fa-solid fa-magnifying-glass prefix red-text text-darken-4"></i>
+          <input type="text" name="query" id="query" minlength="3" class="validate" required>
+          <label for="query">Search Wines</label>
+        </div>
+        <div class="col 12 m4">
+          <a href="{{url_for('get_wine')}}" class red btn text-shadow>Reset</a>
+          <button type="submit" class="red darken-4 btn text-shadow">
+          <i class="fa-solid fa-magnifying-glass left red-text text-darken-4"></i> Search
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
       <div class="row">
         {% for wine in wines if wine.recommend == 'yes' %}
         <div class="col s12 m3 size">
@@ -48,6 +62,7 @@
             </div>
             <div class="card-content red-text text-darken-4">
               <span class="card-title">
+                <strong>Variety:</strong> {{ wine.grape_variety}}<br>
                 <strong>Producer:</strong> {{ wine.producer}}<br>
                 <strong>Region:</strong> {{ wine.region}}<br>
                 <strong>Vintage:</strong> {{ wine.vintage}}<br>
@@ -58,6 +73,8 @@
             <div class="card-action homebtn">
               {% if session.user %}
               <a href="#" class="btn red darken-4">wish list</a>
+              {%else%}
+              <a href="{{ url_for('register') }}" class="btn red darken-4">Register to add wine</a> 
               {% endif %}
             </div>
           </div>
@@ -112,7 +129,9 @@
             </div>
             <div class="card-action transparent ">
               {% if session.user %}
-                <a href="#" class="btn red darken-2" >Follow User</a>
+              <a href="#" class="btn red darken-2">Follow User</a>
+              {%else%}
+              <a href="{{ url_for('register') }}" class="btn red darken-4">Register to follow others</a>
               {% endif %}
             </div>
           </div>

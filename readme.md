@@ -19,26 +19,28 @@ The Humble Grape is a space to share what you have tried, to allow others to exp
     * [***How Is This Will Be Achieved:***](#how-this-will-be-achieved)
     * [***Wireframes***](#wireframes)
     * [***Color Scheme***](#color-scheme)
-    * [***Technology Used***](#Technology-Used)
-    * [***Languages Used***](#Languages-Used)
+    * [***Technology used***](#technology-used)
+    * [***Languages used***](#languages-used)
  1. [**Current Features**](#current-features)
     * [***Main body:***](#main-body)
-        * [*Navigation Bar*](#navigation-bar)
-        * [*toggle functionality *](#toggle-functionality)
+        * [*Home page*](#home-page)
+        * [*Profile page*](#profile-page)
+        * [*Other pages*](#other-pages)
         
+
     * [**Footer**](#footer)
 1. [**Future-Enhancements**](#future-enhancements)
 1. [**Testing Phase**](#testing-phase)
-    * [*Testing*](#Testing)
-        * [*Testing User Stories from User Experience (UX) Section*](#Testing-User-Stories-from-User-Experience-(UX)-Section) 
-        * [*Further Testing*](#Further-Testing) 
-1. [**Accessibility**](#Accessibility)
-1. [**Known Bugs**](#Known-Bugs)
+    * [*Testing*](#testing)
+        * [*Testing User Stories from User Experience (UX) Section*](#testing-user-stories-from-user-experience-ux-section) 
+        * [*Further Testing*](#further-testing) 
+1. [**Accessibility**](#accessibility)
+1. [**Known Bugs**](#known-bugs)
 1. [**Deployment**](#deployment)
 1. [**Credits**](#credits)
-    * [**Honourable mentions**](#honorable-mentions)
-     * [**Content**](#content)
-    * [**Media**](#media)
+    * [**Honourable mentions**](#honourable-mentions)
+    * [**Content**](#content)
+    
 
 ## **Planning stage**
 ### **Target Audiences:**
@@ -53,11 +55,10 @@ The Humble Grape is a space to share what you have tried, to allow others to exp
 * As a user, I want hear others experiences and wine activities that I may want to partake in 
 * As a user, I want to be able to share my experiences and activities with others.
 
-### **Site Aims:**
-* To allow users to record the wines they have tasted.
-* To allow users to find information about wine and the wine making process.
-* To allow users to find other wines which have been recommend by other wine lovers.
-* To enable users to find a sense of community within their local area.
+### **Site Owners Aims:**
+* To create a community of wine lovers
+* To get a wider range of wine options and reviews
+* To share and gain knowledge 
 
 
 ### **How This Will Be Achieved:**
@@ -65,9 +66,6 @@ The Humble Grape is a space to share what you have tried, to allow others to exp
 * Users will be able to search for wines to find inspiration.
 * Users will be able to follow others who are of interest and add wines to their wish list.
  
-
-
-
 ### **Wireframes:**
 I used Balsamiq to create a visual representation of the Travel site - below are the initial idea designs:
 
@@ -77,14 +75,10 @@ I used Balsamiq to create a visual representation of the Travel site - below are
     * ![currency](assets/images/wireframes/currencyTab.png)
    
 
-I had wanted to add a calendar to the site, but omitted this due to time restraints. ![calendar](assets/images/wireframes/calendarTab.png)
-
- 
-
 
 
 ### **Color Scheme:**
-As my favourite wine is a red wine, it was only fitting that this website have a deep ruby red colour scheme. Red's and pinks have been used with the hope that it represents wine.
+As my favourite wine is a red wine, it was only fitting that this website have a deep ruby red colour scheme. Reds and pinks have been used with the hope that it represents wine.
 
 ### **Technology Used:**
 ## Languages Used
@@ -121,14 +115,32 @@ The main body of all the web pages is derived from a base template, which then c
 ### **Home Page** 
 The home page - wine.html - is where users will see wines which have been recommended by others alongside thier reviews. Users who have registers for the site will also be displayed here. This is available for all users. This information is dynamically generated from the database to the website. If a user registers, further functionality is avilable on the home page to allow users to add wine's to their 'wish list' and to follow other users. 
 
+![home page view](testing/screenshots/mainpg1.png)
+![home page view](testing/screenshots/mainpg2.png)
+![home page view](testing/screenshots/mainpg3.png)
+
+
 ### **Profile Page**
 This page allows the user to further populate their profile details including their favourite wine colour or wine region, as well as change their profile picture. This information is additional to the user profile questions needed for registration, but are added to the database once submitted, allowing for the information to be used in other areas of the website.
 
-Here users can also edit or delete wines they have entered. This functionality is only available to those who have registered. Defensive programming has also been used here to enable users to confirm if they want to delete a wine added. 
+Here users can also edit or delete wines they have entered. This functionality is only available to those who have registered. Defensive programming has also been used here to enable users to confirm if they want to delete a wine added.
+
+![profile page view](testing/screenshots/profile1.png)
+![profile page view](testing/screenshots/profile2.png)
+
 
 ### **Other pages**
 The users who are not logged in will be able to see a registration/ login page for them to complete. 
 Users who have logged in will also see a 'Add Wine' page, which is where they can add new wines to their profile and the database. Here users can select if they would recommend the wine, and this wine profile will then be displayed on the home page for other users to see.
+
+![add wine page view](testing/screenshots/addwinepg.png)
+![add wine page view](testing/screenshots/addwinepg1.png)
+![log in/out page view](testing/screenshots/loginoutpg.png)
+![register page view](testing/screenshots/registerpg.png)
+
+
+
+
 
 ## **Future-Enhancements**
 
@@ -164,7 +176,7 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
     
 Javascript
 
-There were no erros identified within the console log within the browser ![console Log view](testing/consoleLog.png)
+There were no erros identified within the console log within the browser ![console Log view](testing/javascripttesting.png)
 
 ### Testing User Stories from User Experience (UX) Section
 
@@ -206,15 +218,16 @@ I wanted to ensure the site supported all visitors, I included the following in 
 * I used semantic elements throughout the design
 
 ### ***Known Bugs***
-*  Users cannot  use the ‘enter’ key when entering text into the input field. When they do, it refreshes the page and returns the user to the main page view.
+*  Users cannot  use the 'wish list' and 'follow' buttons as the code for these has not been written.
+![main page ](testing/bug1.png)
 
-Ideally the user can choose between clicking the button with the mouse or pressing the enter key to add items to the to-do list. 
-![holiday section ](testing/holidaySectionTest.png)
+* There are too many results appearing on the main page from the recommended wine section and the user profile section, makeing the page busy and overwhelming. 
 
-* Also on the above page, there is no option for the user to delete items entered onto the list either by mistake or items which are no longer needed. I think this functionality would have worked if my to-do list was a list item rather than a form element. 
+*  I'd like to be able to add the reveiews left on the wines added to the main page. But because of the varying lengths meant the page formatting was misaligned.
+![wine reviews](testing/bug2.png)
 
-*  There is an overflow which I am unable to remove, which impacts the usability when scaling the page. 
-![site scalability](testing/scalability.png)
+* There is some white spce on the home page which I am unable to remove.
+![main page reviews](testing/bug3.png)
   
 
 

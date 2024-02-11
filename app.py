@@ -24,6 +24,15 @@ def get_wine():
     wines = mongo.db.wine.find()
     user = mongo.db.users.find()
     return render_template("wine.html", wines=wines, user=user)
+    
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query= request.form.get("query")
+    user = list(mongo.db.wine.find({"$text": {"$search":query}}))
+    return render_template("wine.html",  user=user)
+
+
 
 
 #functionality to enable the user to register for a profile. 
@@ -100,7 +109,7 @@ def logout():
     # remove user from session cookie
     flash("You've been logged out")
     session.pop("user")
-    return redirect(url_for("login"))
+    return redirect(url_for("get_wine"))
 
 
 @app.route("/add_wine", methods=["GET", "POST"])
