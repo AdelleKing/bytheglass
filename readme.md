@@ -157,26 +157,29 @@ Users who have logged in will also see a 'Add Wine' page, which is where they ca
 
 ## **Testing**
 
-The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+    My project was tested using external validation tools. This helped me to improve my code and ensure it remains compliant and accessible. 
 
--   [W3C Markup Validator](https://validator.w3.org/nu/) 
+    HTML:
+
+-   [W3C Markup Validator](https://validator.w3.org) 
     
-    Initial tests show various errors to be corrected.
-    ![Initial test results](testing/initialHTMLtest.png)
-    After fixing the errors, the final test results confirm no errors or warnings.
-    ![Final test results](testing/finalHTMLtest.png)
+    All pages were tested using the W3C HTML checker. Errors were actioned. 
 
-
-    [W3C CSS Validator](https://jigsaw.w3.org/css-validator) 
 
     CSS:
 
-    Initial tests show various errors to be corrected.
-    ![Initial test results](testing/initialCSStest.png)
-    
-Javascript
+    [W3C CSS Validator](https://jigsaw.w3.org/css-validator) 
 
-There were no erros identified within the console log within the browser ![console Log view](testing/javascripttesting.png)
+    All pages were tested using the W3C CSS validator, errors relating to the Materalise framework were found. But no errors relating to the custom CSS added.
+    
+    
+    Javascript:
+
+    There were no erros identified within the console log within the browser ![console Log view](testing/javascripttesting.png)
+    
+
+
+
 
 ### Testing User Stories from User Experience (UX) Section
 
@@ -226,18 +229,13 @@ I wanted to ensure the site supported all visitors, I included the following in 
 *  I'd like to be able to add the reveiews left on the wines added to the main page. But because of the varying lengths meant the page formatting was misaligned.
 ![wine reviews](testing/bug2.png)
 
-* There is some white spce on the home page which I am unable to remove.
+* There is some white space on the home page which I am unable to remove.
 ![main page reviews](testing/bug3.png)
   
 
 
 ## **Deployment**
-I deployed the page on Heroku via the following procedure: -
-
-1. From the project's [repository](https://github.com/AdelleKing/Travel), go to the **Settings** tab.
-2. From the left-hand menu, select the **Pages** tab.
-3. Under the **Source** section, select the **Main** branch from the drop-down menu and click **Save**.
-4. A message will be displayed to indicate a successful deployment to GitHub pages and provide the live link.
+I website has been added to Git and GitHub to enable version control. I then uploaded it to heroku for hosting. I was also able to obtain a custom domain www.thehumblegrape.com to further add a professional finish to the site. 
 
 ***
 ## **Credits**
