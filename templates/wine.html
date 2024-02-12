@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="parallax-container">
-  <div class="parallax"><img src="/static/images/main1.jpg">
+  <div class="parallax"><img src="/static/images/main1.jpg" alt="grapestrees in a vineyard">
     <section class="maintext">
       <div class="row">
         <div class="col s12 m6 text-box">
@@ -35,7 +35,7 @@
           <label for="query">Search Wines</label>
         </div>
         <div class="col 12 m4">
-          <a href="{{url_for('get_wine')}}" class red btn text-shadow>Reset</a>
+          <a href="{{url_for('get_wine')}}" class="red btn text-shadow" >Reset</a>
           <button type="submit" class="red darken-4 btn text-shadow">
           <i class="fa-solid fa-magnifying-glass left red-text text-darken-4"></i> Search
           </button>
@@ -49,13 +49,13 @@
           <div class="card transparent">
             <div class="card-image">
               {% if wine.wine_colour == 'red' %}
-              <img src="/static/images/wineglass.jpg" height="10%" draggable="false">
+              <img src="/static/images/wineglass.jpg" alt="wine glass with red wine" height="10%" >
               {% elif wine.wine_colour == 'white' %}
-              <img src="/static/images/white.jpg" height="10%" draggable="false">
+              <img src="/static/images/white.jpg" alt="wine glass with white wine" height="10%" >
               {% elif wine.wine_colour == 'sparkling' %}
-              <img src="/static/images/Sparkling.png" height="10%" draggable="false">
+              <img src="/static/images/Sparkling.png" alt="wine glass with sparkling wine" height="10%" >
               {% else %}
-              <img src="/static/images/rose.jpg" height="10%" draggable="false">
+              <img src="/static/images/rose.jpg" alt="wine glass with rose wine" height="10%" >
               {% endif %}
               <span
                 class="card-title grey lighten-1 red-text text-darken-4"><strong>{{ wine.wine_colour}}</strong></span>
@@ -87,7 +87,7 @@
     <div class="divider"></div>
     <section class="usersBackground">      
       <div class="parallax-container">          
-        <div class="parallax"><img src="/static/images/main2.jpg">
+        <div class="parallax"><img src="/static/images/main2.jpg" alt="number of wine barrels">
       </div>
     </div>  
     <div class="headings"> 
@@ -102,19 +102,19 @@
           <div class="card transparent ">
             <div class="card-image">
               {% if users.icon == 'female' %}
-                <img src="/static/images/female.png">
+                <img src="/static/images/female.png" alt="cartoon female profile pic">
                 {% elif users.icon == 'female2' %}
-                  <img src="/static/images/female2.png">
+                  <img src="/static/images/female2.png" alt="cartoon female profile pic">>
                 {% elif users.icon == 'female3' %}
-                  <img src="/static/images/female3.png">
+                  <img src="/static/images/female3.png" alt="cartoon female profile pic">>
                 {% elif users.icon == 'male' %}
-                  <img src="/static/images/male.png">
+                  <img src="/static/images/male.png" alt="cartoon male profile pic">>
                 {% elif users.icon == 'male2' %}
-                  <img src="/static/images/male2.png">
+                  <img src="/static/images/male2.png" alt="cartoon male profile pic">>
                 {% elif users.icon == 'male3' %}
-                  <img src="/static/images/male3.png">
+                  <img src="/static/images/male3.png" alt="cartoon male profile pic">>
                 {% else %}
-                  <img src="/static/images/pic.png">
+                  <img src="/static/images/pic.png" alt="cartoon male profile pic">>
               {% endif %}
               <span class="card-title grey lighten-1 red-text text-darken-4"><strong>{{ users.username}}</strong></span>
             </div>

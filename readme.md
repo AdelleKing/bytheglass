@@ -8,7 +8,7 @@ Join The Humble Grape in celebrating the art of wine. Wine is a creative process
 The Humble Grape is a space to share what you have tried, to allow others to experience it. To discuss with others great wines or great vineyards or maturation styles. As well as learn about the history of wine, how the technique has developed over the centuries and how technology and science is now enhancing the art.
 
 
-![Am I responsive screenshot](assets/images/wireframes/amIresponsive.png)
+![Am I responsive screenshot](/testing/amiresponsive.png)
 
 ## Table of contents:
 1. [**Site Overview**](#site-overview)
