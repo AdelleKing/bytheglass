@@ -163,6 +163,8 @@ img{
 }
 
 
+
+
 @media only screen and (max-width:992px){
 
   nav .brand-logo{
@@ -206,5 +208,10 @@ height:40rem;
   right: 0;
   left: 55%;
 }
+
+.row .col.m6{
+  left: 0%;
+} 
+
 }
 
