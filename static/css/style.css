@@ -12,7 +12,8 @@ body {
   }
 
   .grey.lighten-5{
-    width:45%
+    width:45%;
+    margin-left: 25rem;
   }
   
   main {
