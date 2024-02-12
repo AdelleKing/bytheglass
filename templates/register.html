@@ -6,7 +6,8 @@
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
             <div class="card-panel">
-                <!-- username -->
+                <!-- section for user to add a username
+                a username already within the databse will produce a message notifying the user -->
                 <div class="row">
 					<div class="input-field col s12">
 						<i class="fas fa-user-plus prefix red-text text-darken-4"></i>
@@ -15,6 +16,8 @@
 						<label for="username">Username</label>
 					</div>
                 </div>
+                <!-- these fields have been added to the registration form to prompt the user to recognise the 
+                edit profile ability on their profile page.  -->
                 <div class="row">
                     <div class="input-field col s8">
                         <input id="name" name="name" type="text" class="validate">
@@ -27,7 +30,8 @@
                         <label for="location">Location</label>
                       </div>
                 </div>
-                <!-- passowrd -->
+                <!-- password - I have added some HTML functionality to apply defensive programming to the password to 
+                make it as secure as possible -->
                 <div class="row">
                     <div class="input-field col s12">
 						<i class="fas fa-user-lock prefix red-text text-darken-4"></i>
@@ -36,7 +40,8 @@
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <!-- register -->
+                <!-- when the user registera, it is automatically added to the database
+                and the user is redirected to their profile page with the added details on display -->
                 <div class="row">
                     <button type="submit" class="col s12 btn-large red darken-4 text-shadow">
                         Register <i class="fas fa-sign-in-alt"></i>
@@ -45,7 +50,7 @@
             </div>
         </form>
     </div>
-
+    <!-- This prompts the user to navigate to the correct page should they already be registered.-->
     <div class="row">
         <div class="col s12">
             <p class="center-align">

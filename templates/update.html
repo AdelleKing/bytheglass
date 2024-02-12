@@ -5,11 +5,13 @@
 
     <div class="row card-panel grey lighten-5">
         <form class="col s12" method="POST" action="{{ url_for('update', users_id=users._id) }}">
-            <!-- category selection -->
+            <!-- this allows users to update their profile information. A future enhancement may be to
+            restrict certain entries from editing e.g. gender or name. to ensure a safe user experience. -->
             <div class="row">
                 <div class="input-field col s12 m6">
                     <select id="icon" name="icon" class="validate">
-                        
+                        <!-- a future enhancement may also be to add facial recgonition or verified photos to ensure 
+                        users are safe online and profiles are real not created by hackers. -->
                         {% if users.icon == null %}
                             <option value="female" data-icon="/static/images/female.png">female</option>
                             <option value="female2" data-icon="/static/images/female2.png">female2 </option>
@@ -73,6 +75,8 @@
                     <label for="wine_region">Favourite wine region</label>
                 </div>
             </div>
+            <!-- currently the users original selection appears in the drop down list 
+            of options, producing a duplication. This in the future will be rectified -->
             <div class="row">
                 <div class="input-field col s12">
                     <select id="sweetness" name="sweetness" class="validate" value="{{users.sweetness}}" >

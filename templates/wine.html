@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<!-- to add the main photo -->
 <div class="parallax-container">
   <div class="parallax"><img src="/static/images/main1.jpg" alt="grapestrees in a vineyard">
     <section class="maintext">
@@ -18,7 +19,7 @@
   </div>
 </div>
     
-
+<!-- the section to hold the wines recommended by others on the site. -->
 <section class="featurewine"> 
   <div class="divider"></div>
   <div class="headings"> 
@@ -43,6 +44,8 @@
       </div>
     </form>
   </div>
+  <!-- I used a for loop to only display those wines which users have recommended when adding them to the database. 
+    The card pulls through various bits of information supplied by the user when adding the wine to the database  -->
       <div class="row">
         {% for wine in wines if wine.recommend == 'yes' %}
         <div class="col s12 m3 size">
@@ -71,6 +74,8 @@
               </span>
             </div>
             <div class="card-action homebtn">
+              <!-- I wanted to add a way for users to add wines to their tasting wishlist. 
+              Although this code has not been written yet, it'll be a future develpoment for the site -->
               {% if session.user %}
               <a href="#" class="btn red darken-4">wish list</a>
               {%else%}
@@ -84,6 +89,7 @@
       
     </section>   
     <br>   
+    <!-- a further image to add a distinct seperation between sections-->
     <div class="divider"></div>
     <section class="usersBackground">      
       <div class="parallax-container">          
@@ -93,15 +99,18 @@
     <div class="headings"> 
       <div class="heading1">
         <h5 class="center-align"><strong>Meet wine enthusiasts local to you </strong></h5>
-      </div>
-    
+      </div>    
     </div> 
+    <!-- Again, I wanted a way for users to see other within their area that they may build a connection with.
+    Also, this enables users to follow people who enjoy similar wines, providing a more bespoke user experience -->
     <div class="row">
       {% for users in user  %}
         <div class="col s12 m3 size ">
           <div class="card transparent ">
             <div class="card-image">
               {% if users.icon == 'female' %}
+              <!-- currently these are generic profile pictures but a future development would be to 
+                enable user to add thier own photos to their profile -->
                 <img src="/static/images/female.png" alt="cartoon female profile pic">
                 {% elif users.icon == 'female2' %}
                   <img src="/static/images/female2.png" alt="cartoon female profile pic">>
@@ -120,6 +129,7 @@
             </div>
             <div class="card-content red-text text-darken-4 ">
               <span class="card-title">
+                <!-- to ensure the display was not hindered by too many characters the word favourite was changed to fave. -->
                 <strong>Fave wine:</strong> {{ users.favourite}}<br>
                 <strong>Fave region:</strong> {{ users.wine_region}}<br>
                 <strong>Location:</strong> {{ users.location}}<br>
