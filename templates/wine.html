@@ -19,12 +19,12 @@
   </div>
 </div>
     
-<!-- the section to hold the wines recommended by others on the site. -->
+<!-- This is the search functionality, it enables the users to search through the database to find wines.  -->
 <section class="featurewine"> 
   <div class="divider"></div>
   <div class="headings"> 
     <div class="heading1">
-      <h5 class="center-align"><strong>Recommended Wines </strong></h5>
+      <h5 class="center-align"><strong>Featured Wines </strong></h5>
     </div>  
   </div> 
   <div class="row card panel grey lighten-5">
@@ -32,22 +32,23 @@
       <div class="row valign-wrapper center-align">
         <div class="input-field col s12 m8">
           <i class="fa-solid fa-magnifying-glass prefix red-text text-darken-4"></i>
-          <input type="text" name="query" id="query" minlength="3" class="validate" required>
+          <input type="text" name="query" id="query"  class="validate" required>
           <label for="query">Search Wines</label>
         </div>
         <div class="col 12 m4">
-          <a href="{{url_for('get_wine')}}" class="red btn text-shadow" >Reset</a>
           <button type="submit" class="red darken-4 btn text-shadow">
-          <i class="fa-solid fa-magnifying-glass left red-text text-darken-4"></i> Search
+            <i class="fa-solid fa-magnifying-glass left red-text text-darken-4"></i> Search
           </button>
+          <a href="{{url_for('get_wine')}}" class="red btn text-shadow">Reset</a>
         </div>
       </div>
-    </form>
+  </div>
+  </form>
   </div>
   <!-- I used a for loop to only display those wines which users have recommended when adding them to the database. 
     The card pulls through various bits of information supplied by the user when adding the wine to the database  -->
       <div class="row">
-        {% for wine in wines if wine.recommend == 'yes' %}
+        {% for wine in wines  %}
         <div class="col s12 m3 size">
           <div class="card transparent">
             <div class="card-image">
@@ -70,6 +71,7 @@
                 <strong>Region:</strong> {{ wine.region}}<br>
                 <strong>Vintage:</strong> {{ wine.vintage}}<br>
                 <strong>ABV:</strong> {{ wine.ABV}}%<br>
+                <strong>Recommended:</strong> {{ wine.recommend}}<br>
                 <strong>Added By:</strong> {{wine.added_by}}<br>
               </span>
             </div>
